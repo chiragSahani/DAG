@@ -1,205 +1,175 @@
 # Pipeline Editor (DAG Builder)
 
-A comprehensive React + TypeScript application for building and validating Directed Acyclic Graphs (DAGs) with real-time validation and auto-layout capabilities.
-
-![Pipeline Editor Screenshot](https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
-
-## 🚀 Features
-
-### Core Features
-- **Interactive Node Creation**: Click "Add Node" to create labeled nodes with clear input/output ports
-- **Manual Edge Drawing**: Drag connections between nodes with real-time validation
-- **Smart Connection Rules**: Prevents invalid connections (self-loops, wrong directions)
-- **Keyboard Shortcuts**: Delete selected items with Delete/Backspace key
-- **Real-time DAG Validation**: Continuous validation with detailed error messages
-
-### Advanced Features
-- **Auto Layout**: Dagre-based automatic node arrangement with zoom-to-fit
-- **JSON Preview**: Live JSON export of the current graph structure
-- **Mini Map**: Navigation aid for large graphs
-- **Context Actions**: Right-click context menus and tooltips
-- **Export Functionality**: Download graph as JSON file
-- **Selection Management**: Multi-select nodes and edges
-
-### Visual Design
-- **Modern UI**: Clean, professional interface with smooth animations
-- **Color-coded Validation**: Visual feedback for DAG status
-- **Custom Node Design**: Professional node styling with clear port indicators
-- **Responsive Layout**: Works across different screen sizes
-- **Accessibility**: Keyboard navigation and screen reader support
-
-## 🛠️ Technology Stack
-
-- **React 18** - UI framework
-- **TypeScript** - Type safety
-- **React Flow** - Node-based graph editor
-- **Zustand** - State management
-- **Dagre** - Auto-layout algorithm
-- **Tailwind CSS** - Styling
-- **Lucide React** - Icons
-- **Vite** - Build tool
-
-## 📦 Installation
-
-```bash
-# Clone the repository
-git clone <repository-url>
-cd pipeline-editor
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-```
-
-## 🎯 Usage
-
-### Basic Operations
-1. **Add Nodes**: Click "Add Node" button and enter a label
-2. **Connect Nodes**: Drag from blue output ports to teal input ports
-3. **Delete Items**: Select nodes/edges and press Delete key
-4. **Auto Layout**: Click "Auto Layout" to organize nodes automatically
-5. **Export Graph**: Click "Export" to download as JSON
-
-### Keyboard Shortcuts
-- `Delete/Backspace` - Delete selected items
-- `Escape` - Clear selection
-- `Ctrl/Cmd + A` - Select all items
-- `Ctrl/Cmd + N` - Add new node (when implemented)
-- `Ctrl/Cmd + L` - Auto layout (when implemented)
-
-### Validation Rules
-- Minimum 2 nodes required
-- No cycles allowed (must be acyclic)
-- All nodes must be connected
-- No self-loops permitted
-- Edges must follow direction rules (output → input)
-
-## 🏗️ Architecture
-
-### Project Structure
-```
-src/
-├── components/           # React components
-│   ├── PipelineEditor.tsx   # Main editor container
-│   ├── Toolbar.tsx          # Action buttons and controls
-│   ├── Canvas.tsx           # React Flow canvas
-│   ├── CustomNode.tsx       # Custom node component
-│   ├── ValidationPanel.tsx  # DAG validation display
-│   └── JSONPreview.tsx      # JSON output preview
-├── stores/
-│   └── pipelineStore.ts     # Zustand state management
-├── utils/
-│   ├── dagValidation.ts     # DAG validation logic
-│   └── autoLayout.ts        # Dagre layout integration
-├── types/
-│   └── pipeline.ts          # TypeScript definitions
-└── App.tsx                  # Root component
-```
-
-### Design Decisions
-
-1. **Zustand for State Management**: Chosen for its simplicity and TypeScript support over Redux
-2. **React Flow**: Industry-standard library for node-based editors with excellent customization
-3. **Dagre Layout**: Proven algorithm for automatic graph layout
-4. **Modular Architecture**: Separated concerns for maintainability and testing
-5. **Custom Validation**: Implemented DFS-based cycle detection for performance
-
-### Key Components
-
-- **PipelineStore**: Centralized state management with actions
-- **CustomNode**: Reusable node component with visual ports
-- **Canvas**: React Flow integration with event handling
-- **ValidationPanel**: Real-time DAG validation feedback
-- **Toolbar**: User actions and controls
-
-## 🧪 Validation Logic
-
-The application implements comprehensive DAG validation:
-
-1. **Cycle Detection**: Uses Depth-First Search (DFS) with recursion stack
-2. **Connectivity Check**: Ensures all nodes participate in edges
-3. **Direction Validation**: Enforces proper edge directions
-4. **Self-loop Prevention**: Blocks nodes connecting to themselves
-5. **Minimum Nodes**: Requires at least 2 nodes for valid DAG
-
-## 🎨 Customization
-
-### Adding New Node Types
-```typescript
-// In CustomNode.tsx
-const nodeTypes = {
-  custom: CustomNode,
-  database: DatabaseNode,  // Add new type
-  api: APINode,           // Add another type
-};
-```
-
-### Extending Validation Rules
-```typescript
-// In dagValidation.ts
-export function validateDAG(nodes, edges) {
-  // Add custom validation logic
-  const hasCustomRule = checkCustomRule(nodes, edges);
-  // Return enhanced validation result
-}
-```
-
-## 🔧 Development
-
-### Running Tests
-```bash
-npm run test
-```
-
-### Linting
-```bash
-npm run lint
-```
-
-### Building
-```bash
-npm run build
-npm run preview
-```
-
-## 🚧 Challenges Faced
-
-1. **React Flow Integration**: Managing state synchronization between React Flow and Zustand
-2. **Cycle Detection**: Implementing efficient DFS algorithm for large graphs
-3. **Real-time Validation**: Balancing performance with immediate feedback
-4. **Edge Validation**: Preventing invalid connections while maintaining UX
-5. **Auto Layout**: Integrating Dagre with React Flow coordinate systems
-
-## 🔮 Future Enhancements
-
-- **Undo/Redo**: Command pattern implementation
-- **Node Templates**: Predefined node types for common operations
-- **Graph Persistence**: Save/load functionality with backend integration
-- **Collaborative Editing**: Real-time multi-user editing
-- **Advanced Validation**: Custom validation rules and plugins
-- **Graph Analytics**: Metrics and insights about pipeline structure
-
-## 📝 License
-
-MIT License - see LICENSE file for details
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
-
-## 📞 Support
-
-For questions or issues, please open a GitHub issue or contact the development team.
+A next-generation **visual pipeline builder** for Directed Acyclic Graphs (DAGs) with live validation, stunning auto-layout, and a sleek, immersive user experience.
 
 ---
 
-Built with ❤️ using React, TypeScript, and modern web technologies.
+## ✨ Key Features
+
+### 🚦 Interactive & Intuitive Editing
+- **Drag-and-Drop Node Creation**: Add nodes instantly with vibrant animations and dynamic labels
+- **Smart Edge Drawing**: Draw connections fluidly between ports, with magnetic snapping and real-time feedback
+- **Contextual Menus**: Right-click for quick actions, custom node options, and tooltips
+- **Live Validation**: Errors highlighted inline on the canvas, with animated color-coded states
+
+### 🎨 Visual Brilliance
+- **Modern UI**: Glassmorphism panels, soft shadows, and animated transitions throughout
+- **Colorful Node Types**: Distinct color themes and icons for each node type (data, API, compute, etc.)
+- **Interactive Mini Map**: Zoomable, draggable overview with live viewport tracking
+- **Customizable Themes**: Toggle light/dark modes, or apply your own color palette
+
+### 🧠 Smart DAG Management
+- **Auto Layout**: One click to magically arrange nodes with Dagre, including animated repositioning
+- **Real-time JSON Preview**: See up-to-the-millisecond JSON export in a side panel
+- **Multi-Select & Bulk Actions**: Shift/drag to select items, then move, delete, or export in one go
+- **Export & Import**: Download/upload complete graph as JSON with pretty formatting
+
+### ⚡ Productivity Power-Ups
+- **Keyboard Shortcuts**: Fast actions (see below)
+- **Undo/Redo**: Infinite history stack (coming soon)
+- **Accessibility**: Full keyboard navigation, ARIA labeling, high-contrast mode
+
+---
+
+## 💡 Quick Start
+
+```bash
+git clone <repository-url>
+cd pipeline-editor
+npm install
+npm run dev         # Start in development
+npm run build       # Production build
+```
+
+---
+
+## 🕹️ How to Use
+
+| Action         | How-To                                             |
+|----------------|---------------------------------------------------|
+| Add Node       | Click **"+"** or use `Ctrl/Cmd + N`               |
+| Connect Nodes  | Drag from blue output to teal input port          |
+| Delete         | Select & press `Delete`/`Backspace`               |
+| Auto Layout    | Click **"Auto Layout"** or `Ctrl/Cmd + L`         |
+| Export         | Click **"Export"** or use context menu            |
+| Select All     | `Ctrl/Cmd + A`                                    |
+| Deselect       | `Escape`                                          |
+
+### ⚖️ Validation Rules
+
+- **Minimum 2 nodes** required
+- **No cycles** (DAG-only)
+- **No self-loops**
+- **All nodes connected**
+- **Edges must be proper direction** (output → input)
+
+Errors are shown **inline** and in the **Validation Panel**.
+
+---
+
+## 🏗️ Architecture Overview
+
+```
+src/
+├── components/
+│   ├── PipelineEditor.tsx   # Main container
+│   ├── Toolbar.tsx          # Top bar actions
+│   ├── Canvas.tsx           # React Flow canvas
+│   ├── CustomNode.tsx       # Gorgeous custom nodes
+│   ├── ValidationPanel.tsx  # Animated validation/error display
+│   └── JSONPreview.tsx      # Live JSON panel
+├── stores/
+│   └── pipelineStore.ts     # Zustand state store
+├── utils/
+│   ├── dagValidation.ts     # DAG rules & error detection
+│   └── autoLayout.ts        # Dagre integration
+├── types/
+│   └── pipeline.ts          # TypeScript types
+└── App.tsx                  # App root
+```
+
+### 📐 Design Highlights
+
+- **Glassmorphism and Neumorphism** for panels and dialogs
+- **Animated node transitions** (bounce, fade, highlight on error)
+- **Lucide icons** for node types and actions
+- **Zustand** for lightweight, scalable state
+- **React Flow** with custom edge styles and port indicators
+
+---
+
+## 🧩 Customization
+
+### Add Node Types (with Custom Icons & Colors)
+```typescript
+const nodeTypes = {
+  custom: CustomNode,
+  database: DatabaseNode,   // New: purple theme, DB icon
+  api: APINode,             // New: yellow theme, API icon
+  lambda: LambdaNode,       // New: green theme, function icon
+};
+```
+
+### Extend Validation
+```typescript
+export function validateDAG(nodes, edges) {
+  // Custom rule: at least one "database" node
+  const hasDatabase = nodes.some(n => n.type === 'database');
+  // ...your logic here
+}
+```
+
+---
+
+## 🧪 Development & Quality
+
+| Task      | Command            |
+|-----------|--------------------|
+| Test      | `npm run test`     |
+| Lint      | `npm run lint`     |
+| Build     | `npm run build`    |
+| Preview   | `npm run preview`  |
+
+---
+
+## 🚧 Challenges & Innovations
+
+- **Smooth state sync** between React Flow and Zustand for seamless UX
+- **Optimized DFS cycle detection** for instant feedback, even on huge graphs
+- **Animated validation feedback** for better clarity and engagement
+- **Dagre auto-layout** with animated, visually pleasing transitions
+
+---
+
+## 🔮 Future-Ready (Planned)
+
+- 🔁 **Undo/Redo**: Advanced history stack
+- 🧱 **Node Templates**: Drag preset patterns
+- 💾 **Persistent Save/Load** (backend integration)
+- 🤝 **Real-time Collaboration**
+- 🛡️ **Plugin System**: Custom validation, analytics, and node types
+- 📊 **Pipeline Analytics**: Metrics and visual insights
+
+---
+
+## 🤝 Contributing
+
+1. **Fork** the repo
+2. **Create Branch**: `feature/amazing-feature`
+3. **Commit**: `git commit -m 'Add amazing feature'`
+4. **Push**: `git push origin feature/amazing-feature`
+5. **Open PR** & describe your innovation!
+
+---
+
+## 📝 License
+
+MIT License - see LICENSE
+
+---
+
+## 💬 Support
+
+Open an issue or contact the dev team. Built with ❤️ using React, TypeScript, Tailwind, and modern web magic.
+
+---
