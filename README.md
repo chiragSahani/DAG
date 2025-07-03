@@ -2,8 +2,6 @@
 
 A next-generation **visual pipeline builder** for Directed Acyclic Graphs (DAGs) with live validation, stunning auto-layout, and a sleek, immersive user experience.
 
----
-
 ## ✨ Key Features
 
 ### 🚦 Interactive & Intuitive Editing
@@ -34,8 +32,8 @@ A next-generation **visual pipeline builder** for Directed Acyclic Graphs (DAGs)
 ## 💡 Quick Start
 
 ```bash
-git clone <repository-url>
-cd pipeline-editor
+git clonehttps://github.com/chiragSahani/DAG.git
+cd DAG
 npm install
 npm run dev         # Start in development
 npm run build       # Production build
